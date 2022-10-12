@@ -14,7 +14,8 @@
     - galera-install
     - galera-pacemaker
 
-- include_vars: "{{ ansible_os_family }}_packages.yml"
+- name: Include OS family specific packages (since they were not defined)
+  include_vars: "{{ ansible_os_family }}_packages.yml"
   tags:
     - galera
     - galera-bootstrap
