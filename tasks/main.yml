@@ -41,9 +41,14 @@
 - include: install.yml
   tags: [ galera, galera-install ]
 
-- include: firewall.yml
+- include: firewalld.yml
   when: galera_firewalld is defined and
         galera_firewalld == true
+  tags: [ galera, galera-firewall ]
+
+- include: ufw.yml
+  when: galera_ufw is defined and
+        galera_ufw == true
   tags: [ galera, galera-firewall ]
 
 - include: config.yml

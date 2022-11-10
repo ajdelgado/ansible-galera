@@ -1,5 +1,5 @@
 ---
-# file: roles/galera/tasks/firewall.yml
+# file: roles/galera/tasks/firewalld.yml
 - name: MySQL/MariaDB/Galera firewalld rules
   firewalld:
     port={{ item }}

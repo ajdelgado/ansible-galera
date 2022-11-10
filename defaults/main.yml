@@ -16,6 +16,7 @@ galera_clustercheck_password: Y3aH1l0ved2CH3CK
 galera_reset_cluster: false
 galera_selinux: true
 galera_firewalld: true
+galera_ufw: false
 galera_cluster_name: uoi-sql-cluster
 galera_sst_method: xtrabackup-v2
 galera_sst_user: sst-replication
