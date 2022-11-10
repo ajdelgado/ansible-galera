@@ -7,8 +7,8 @@
     proto: tcp
     state: enabled
   with_items:
-    - "{{ fw_galera }}/tcp"
-    - "{{ fw_mysql }}/tcp"
+    - "{{ fw_galera }}"
+    - "{{ fw_mysql }}"
 
 - name: MySQL/MariaDB/Galera UFW UDP rules
   ufw:
