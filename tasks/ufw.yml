@@ -3,7 +3,7 @@
 - name: MySQL/MariaDB/Galera UFW rules
   ufw:
     rule: allow
-    port: {{ item }}
+    port: "{{ item }}"
     state: enabled
   with_items:
     - "{{ fw_galera }}/tcp"
