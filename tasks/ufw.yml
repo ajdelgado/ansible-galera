@@ -1,33 +1,43 @@
 ---
 # file: roles/galera/tasks/ufw.yml
-- name: MySQL/MariaDB/Galera UFW rules
+- name: MySQL/MariaDB/Galera UFW TCP rules
   ufw:
     rule: allow
     port: "{{ item }}"
+    proto: tcp
     state: enabled
   with_items:
     - "{{ fw_galera }}/tcp"
-    - "{{ fw_galera }}/udp"
     - "{{ fw_mysql }}/tcp"
+
+- name: MySQL/MariaDB/Galera UFW UDP rules
+  ufw:
+    rule: allow
+    port: "{{ fw_galera }}"
+    proto: udp
+    state: enabled
 
 - name: IST replication UFW rule
   ufw:
     rule: allow
-    port: "{{ fw_mysql_ist }}/tcp"
+    port: "{{ fw_mysql_ist }}"
+    proto: tcp
     state: enabled
   when: not galera_sst_method
 
 - name: SST replication ufw rule
   ufw:
     rule: allow
-    port: "{{ fw_mysql_sst }}/tcp"
+    port: "{{ fw_mysql_sst }}"
+    proto: tcp
     state: enabled
   when: galera_sst_method
 
 - name: xinetd UFW rule
   ufw:
     rule: allow
-    port: "{{ fw_xinetd }}/tcp"
+    port: "{{ fw_xinetd }}"
+    proto: tcp
     state: enabled
   when: galera_pacemaker_support is defined and
         galera_pacemaker_support == true
