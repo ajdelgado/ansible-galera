@@ -30,9 +30,7 @@ wsrep_slave_threads={{ galera_slave_threads | default('8') }}
 # Galera Synchronization Configuration
 wsrep_sst_method={{ galera_sst_method | default('rsync') }}
 wsrep_sst_auth={{ galera_sst_user }}:{{ galera_sst_password }}
-{% if wsrep_sst_donors is defined %}
 wsrep_sst_donor={{ wsrep_sst_donors |join(',') }}
-{% endif %}
 
 # Galera Node Configuration
 wsrep_node_address="{{ galera_node_address | default('127.0.0.1') }}"
