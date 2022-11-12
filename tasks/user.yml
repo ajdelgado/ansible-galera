@@ -3,7 +3,7 @@
 - name: Creating the SST replication user
   mysql_user:
     name: "{{ galera_sst_user }}"
-    host_all: all
+    host: '%'
     password: "{{ galera_sst_password }}"
     priv: "*.*:ALL,GRANT"
     state: present
