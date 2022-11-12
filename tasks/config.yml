@@ -11,10 +11,10 @@
     state=started
   when: inventory_hostname == galera_master
 
-- include: configurations/Debian.yml
+- include_tasks: configurations/Debian.yml
   when: ansible_os_family == 'Debian'
 
-- include: configurations/RedHat.yml
+- include_tasks: configurations/RedHat.yml
   when: ansible_os_family == 'RedHat'
 
 - name: Removing wap-wsp* services from /etc/services
