@@ -30,40 +30,40 @@
     - galera-pacemaker
   when: galera_packages | length == 0
 
-- include: reset.yml
+- include_tasks: reset.yml
   when: galera_reset_cluster is defined and
         galera_reset_cluster == true
   tags: [ galera, galera-reset ]
 
-- include: repos.yml
+- include_tasks: repos.yml
   tags: [ galera, galera-repo ]
 
-- include: install.yml
+- include_tasks: install.yml
   tags: [ galera, galera-install ]
 
-- include: firewalld.yml
+- include_tasks: firewalld.yml
   when: galera_firewalld is defined and
         galera_firewalld == true
   tags: [ galera, galera-firewall ]
 
-- include: ufw.yml
+- include_tasks: ufw.yml
   when: galera_ufw is defined and
         galera_ufw == true
   tags: [ galera, galera-firewall ]
 
-- include: config.yml
+- include_tasks: config.yml
   tags: [ galera, galera-config ]
 
-- include: secure.yml
+- include_tasks: secure.yml
   tags: [ galera, galera-secure ]
 
-- include: user.yml
+- include_tasks: user.yml
   tags: [ galera, galera-users ]
 
-- include: bootstrap.yml
+- include_tasks: bootstrap.yml
   tags: [ galera, galera-bootstrap ]
 
-- include: pacemaker.yml
+- include_tasks: pacemaker.yml
   when: galera_pacemaker_support is defined and
         galera_pacemaker_support == true
   tags: [ galera, galera-pacemaker ]
