@@ -19,3 +19,8 @@
     regexp='^wsrep_cluster_address='
     line='wsrep_cluster_address=gcomm://{{ ",".join(galera_cluster_nodes) }}'
   when: inventory_hostname == galera_master
+
+- name: Wait for you test
+  pause:
+    prompt: Just waiting so you can ssh to the master node to check it
+    minutes: 10
